@@ -1,18 +1,15 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
 
-const Sidebar = () => {
+const Sidebar = ({ onMenuClick }) => {
   return (
     <div className="sidebar">
-      <h2>Admin Panel</h2>
       <ul>
-        <li><Link to="/admin">Dashboard</Link></li>
-        <li><Link to="/admin/users">Users</Link></li>
-        <li><Link to="/admin/products">Products</Link></li>
-        <li><Link to="/admin/orders">Orders</Link></li>
+        <li onClick={() => onMenuClick('Dashboard')}>Dashboard</li>
+        <li onClick={() => onMenuClick('Users')}>Users</li>
+        {/* Diğer sayfa linklerini burada ekleyebilirsiniz */}
       </ul>
     </div>
   );
 };
 
-export default Sidebar;
+export default Sidebar
