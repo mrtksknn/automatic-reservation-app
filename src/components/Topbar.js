@@ -29,18 +29,21 @@ const Topbar = ({ userName }) => {
 
   return (
     <div className="topbar">
-      <p>Welcome, {userName}</p>
-      <div className="dropdown">
-        <button className="dropdown-toggle" onClick={handleDropdownToggle}>
-          <FontAwesomeIcon icon={isDropdownOpen ? faCaretUp : faCaretDown} />
-        </button>
-        {isDropdownOpen && (
-          <div className="dropdown-menu">
-            <button onClick={handleLogout}>
-              Logout
-            </button>
-          </div>
-        )}
+      <div className="topbar-logo">
+        <p>Auto Reception</p>
+      </div>
+      <div className="topbar-user">
+        <p>Welcome, {userName}</p>
+        <div className="dropdown">
+          <button className="dropdown-toggle" onClick={handleDropdownToggle}>
+            <FontAwesomeIcon icon={isDropdownOpen ? faCaretUp : faCaretDown} />
+          </button>
+          {isDropdownOpen && (
+            <div className="dropdown-menu">
+              <button onClick={handleLogout}>Logout</button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

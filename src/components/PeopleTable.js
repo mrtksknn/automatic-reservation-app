@@ -21,6 +21,11 @@ const PeopleTable = ({ users }) => {
   ];
 
   const customStyles = {
+    tableHeadRow: {
+      style: {
+        borderRadius: '6px'
+      }
+    },
     headCells: {
       style: {
         backgroundColor: 'red',
@@ -33,6 +38,7 @@ const PeopleTable = ({ users }) => {
     },
     pagination: {
       style: {
+        borderRadius: '0 0 6px 6px',
         backgroundColor: '#fff', // Sayfalama düğmelerinin arka plan rengi
       },
     },
@@ -52,6 +58,7 @@ const PeopleTable = ({ users }) => {
       columns={columns}
       data={users}
       pagination
+      responsive={true}
       customStyles={customStyles}
       paginationRowsPerPageOptions={paginationOptions}
       paginationComponentOptions={paginationComponentOptions}

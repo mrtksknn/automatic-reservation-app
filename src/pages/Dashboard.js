@@ -1,28 +1,29 @@
 import React from 'react';
-import Users from './Users';
-import '../styles/Dashboard.css';
+import UserDetails from './UserDetails'; // Kullanıcı yönetimi sayfası
+import Users from '../pages/Users'; // Ürün yönetimi sayfası
+import Reports from '../pages/Reports'; // Raporlar sayfası
+import Settings from '../pages/Settings'; // Ayarlar sayfası
+import DailyNotifications from '../pages/DailyNotifications'; // Bildirimler sayfası
 
 const Dashboard = () => {
-  // Dummy veriler
-  const data = [
-    { id: 1, title: 'Widget 1', value: 100 },
-    { id: 2, title: 'Widget 2', value: 75 },
-    { id: 3, title: 'Widget 3', value: 50 },
-    { id: 4, title: 'Widget 4', value: 25 },
+  // Sadece örnek veri, gerçek verilerle değiştirilmelidir
+  const users = [
+    { id: 1, name: 'John Doe', email: 'john@example.com', role: 'admin' },
+    { id: 2, name: 'Jane Doe', email: 'jane@example.com', role: 'user' },
+    { id: 3, name: 'Bob Smith', email: 'bob@example.com', role: 'user' },
+    // ... Diğer kullanıcılar ...
   ];
 
   return (
-    <div className="dashboard">
-      <div className="widgets">
-        {data.map((item) => (
-          <div className="widget" key={item.id}>
-            <h3>{item.title}</h3>
-            <p>{item.value}%</p>
-          </div>
-        ))}
-      </div>
-      <div className='usersTable'>
-        <Users />
+    <div className="dashboard-content">
+      <div className="dashboard-body">
+        <div className="main-content">
+          <Users />
+          <UserDetails users={users} />
+          <Reports />
+          <Settings />
+          <DailyNotifications />
+        </div>
       </div>
     </div>
   );

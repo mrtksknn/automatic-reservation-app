@@ -1,9 +1,9 @@
 :root {
-  --text-color: #333;
-  --primary-color: #3498db;
-  --secondary-color: #27ae60;
-  --background-color: #f1f1f1;
-  --sidebar-item-hover: #2980b9;
+  --text-color: #5D6679;
+  --primary-color: #ffffff;
+  --secondary-color: #1366D9;
+  --background-color: #EEF0F2;
+  --sidebar-item-hover: #E8F1FD;
 }
 
 /* Body styles */
@@ -25,17 +25,21 @@ body {
 /* Topbar styles */
 .topbar {
   display: flex;
+  padding: 28px 20px;
   align-items: center;
-  justify-content: flex-end;
-  background-color: #2980b9;
-  color: #fff;
-  padding: 10px;
+  color: var(--text-color);
+  justify-content: space-between;
+  background-color: var(--primary-color);
 }
 
-.user-info {
+.topbar-user {
   display: flex;
   align-items: center;
+}
+.user-info {
+  display: flex;
   cursor: pointer;
+  align-items: center;
 }
 
 .user-info p {
@@ -48,7 +52,7 @@ body {
 
 .dropdown-toggle {
   border: none;
-  color: #fff;
+  color: var(--text-color);
   background: none;
   cursor: pointer;
 }
@@ -58,8 +62,8 @@ body {
   position: absolute;
   top: 100%;
   right: 0;
-  background-color: #ffffff; /* Dropdown menü arka plan rengi */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Dropdown menü gölge efekti */
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   padding: 8px;
 }
 
@@ -86,10 +90,11 @@ body {
 /* Sidebar styles */
 .sidebar {
   width: 15%;
-  padding: 20px;
-  color: #fff;
   display: flex;
+  max-width: 220px;
+  padding: 32px 12px;
   flex-direction: column;
+  color: var(--text-color);
   background-color: var(--primary-color);
 }
 
@@ -99,10 +104,15 @@ body {
   margin: 0;
 }
 
+.sidebar li .icon {
+  padding: 8px 12px;
+}
+
 .sidebar li {
+  display: flex;
+  align-items: center;
   border-radius: 6px;
   font-size: 18px;
-  padding: 10px;
   cursor: pointer;
 }
 
@@ -137,11 +147,11 @@ table th {
 /* Responsive styles */
 @media screen and (max-width: 768px) {
   .topbar p {
-    font-size: 14px;
+    font-size: 18px;
   }
 
   .topbar button {
-    font-size: 12px;
+    font-size: 18px;
   }
 
   .content {
