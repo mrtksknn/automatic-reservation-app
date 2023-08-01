@@ -1,8 +1,9 @@
 import React from 'react';
 import DataTable from 'react-data-table-component';
+import '../styles/PeopleTable.css';
 
-const PeopleTable = ({ users }) => {
-  const columns = [
+const PeopleTable = ({ data, activity }) => {
+  const users = [
     {
       name: 'Name',
       selector: 'name',
@@ -17,7 +18,30 @@ const PeopleTable = ({ users }) => {
       name: 'Role',
       selector: 'role',
       sortable: true,
+    }
+  ];
+
+  const reports = [
+    {
+      name: 'User',
+      selector: 'user',
+      sortable: true,
     },
+    {
+      name: 'Activity',
+      selector: 'activity',
+      sortable: true,
+    },
+    {
+      name: 'Date',
+      selector: 'date',
+      sortable: true,
+    },
+    {
+      name: 'Duration (min)',
+      selector: 'duration',
+      sortable: true,
+    }
   ];
 
   const customStyles = {
@@ -28,7 +52,8 @@ const PeopleTable = ({ users }) => {
     },
     headCells: {
       style: {
-        backgroundColor: 'red',
+        color: '#fff',
+        backgroundColor: '#3498db',
       },
     },
     cells: {
@@ -54,15 +79,17 @@ const PeopleTable = ({ users }) => {
   const  paginationOptions = [5, 10, 20];
 
   return (
-    <DataTable
-      columns={columns}
-      data={users}
-      pagination
-      responsive={true}
-      customStyles={customStyles}
-      paginationRowsPerPageOptions={paginationOptions}
-      paginationComponentOptions={paginationComponentOptions}
-    />
+    <div className='peopleTable'>
+      <DataTable
+        columns={activity ? reports : users}
+        data={data}
+        pagination
+        responsive={true}
+        customStyles={customStyles}
+        paginationRowsPerPageOptions={paginationOptions}
+        paginationComponentOptions={paginationComponentOptions}
+      />
+    </div>
   )
 };
   

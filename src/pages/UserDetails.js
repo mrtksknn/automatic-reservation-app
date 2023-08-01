@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { firestore } from '../firebase';
+import '../styles/UserDetails.css';
 import PeopleTable from '../components/PeopleTable';
 
 
@@ -17,7 +18,10 @@ const UserDetails = () => {
   }, []);
 
   return (
-    <PeopleTable users={users} />
+    <>
+      <h3>User List</h3>
+      <PeopleTable data={users} />
+    </>
   );
 };
 

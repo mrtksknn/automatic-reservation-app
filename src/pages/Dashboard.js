@@ -6,21 +6,48 @@ import Settings from '../pages/Settings'; // Ayarlar sayfası
 import DailyNotifications from '../pages/DailyNotifications'; // Bildirimler sayfası
 
 const Dashboard = () => {
-  // Sadece örnek veri, gerçek verilerle değiştirilmelidir
+  const today = new Date();
   const users = [
-    { id: 1, name: 'John Doe', email: 'john@example.com', role: 'admin' },
-    { id: 2, name: 'Jane Doe', email: 'jane@example.com', role: 'user' },
-    { id: 3, name: 'Bob Smith', email: 'bob@example.com', role: 'user' },
-    // ... Diğer kullanıcılar ...
+    'Michael Johnson',
+    'Emily Wilson',
+    'Jane Smith',
+    'William Jones',
+    'Mert Keskin',
+    'Olivia Brown',
+    'John Doe',
   ];
+
+  const fakeData = [];
+  for (let i = 10; i >= 1; i--) {
+    const date = new Date(today);
+    date.setDate(date.getDate() - i);
+    const randomUserIndex = Math.floor(Math.random() * users.length);
+    const randomActivity = Math.random() < 0.5 ? 'Login' : 'Logout';
+    fakeData.push({
+      user: users[randomUserIndex],
+      activity: randomActivity,
+      date: formatDate(date),
+      duration: Math.floor(Math.random() * 60) + 30, // 30 ile 90 dakika arasında rastgele süre
+      login: Math.floor(Math.random() * 50) + 50,
+      logout: Math.floor(Math.random() * 50) + 50,
+    });
+  }
+
+  // Tarihi "yyyy-MM-dd" formatına dönüştüren yardımcı bir fonksiyon
+  function formatDate(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
 
   return (
     <div className="dashboard-content">
       <div className="dashboard-body">
         <div className="main-content">
           <Users />
-          <UserDetails users={users} />
-          <Reports />
+          <UserDetails />
+          <Reports reportData={fakeData} />
           <Settings />
           <DailyNotifications />
         </div>
