@@ -1,0 +1,19 @@
+.settings-container {
+  padding: 20px;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+}
+
+.setting-item {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+}
+
+select,
+input[type='checkbox'] {
+  margin-top: 5px;
+}

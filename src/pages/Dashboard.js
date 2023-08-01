@@ -2,7 +2,6 @@ import React from 'react';
 import UserDetails from './UserDetails'; // Kullanıcı yönetimi sayfası
 import Users from '../pages/Users'; // Ürün yönetimi sayfası
 import Reports from '../pages/Reports'; // Raporlar sayfası
-import Settings from '../pages/Settings'; // Ayarlar sayfası
 import DailyNotifications from '../pages/DailyNotifications'; // Bildirimler sayfası
 
 const Dashboard = () => {
@@ -48,7 +47,6 @@ const Dashboard = () => {
           <Users />
           <UserDetails />
           <Reports reportData={fakeData} />
-          <Settings />
           <DailyNotifications />
         </div>
       </div>
