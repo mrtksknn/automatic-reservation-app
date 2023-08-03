@@ -30,7 +30,7 @@ const Topbar = ({ userName }) => {
   return (
     <div className="topbar">
       <div className="topbar-logo">
-        <p>Auto Reception</p>
+        <p>Smart-FrontDesk</p>
       </div>
       <div className="topbar-user">
         <p>Welcome, {userName}</p>

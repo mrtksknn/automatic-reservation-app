@@ -16,7 +16,6 @@ const Reports = ({ reportData }) => {
           <Legend />
           <Line type="monotone" dataKey="login" stroke="green" />
           <Line type="monotone" dataKey="logout" stroke="red" />
-          {/* Diğer aktiviteler için buraya Line bileşeni ekleyebilirsiniz */}
         </LineChart>
       </ResponsiveContainer>
 
