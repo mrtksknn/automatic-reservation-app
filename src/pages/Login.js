@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 import { auth, firestore } from '../firebase';
 import { setUser } from '../actions/userActions';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -31,25 +33,102 @@ const Login = () => {
             const user = userDoc.data();
 
             if (user.role === 'admin') {
-              console.log('Admin olarak giriş yapıldı');
+              const eventData = {
+                userName: user.name, // Burada "name" yerine kullanıcının adını içeren uygun alan adını kullanmalısınız
+                eventType: 'login',
+                timestamp: new Date().toISOString(),
+              };
+
+              // Firestore veritabanına event bilgisini ekle
+              await firestore.collection('events').add(eventData);
+
+              toast.success("Logged in as an Admin successfully", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+              });
+
               dispatch(setUser(user));
-              navigate('/admin'); // AdminPanel sayfasına yönlendir
+              navigate('/admin');
             } else {
-              console.log('Admin olmayan kullanıcı');
-              // Hata mesajı göster veya diğer işlemleri yap
+              toast.success(`Logged in as an ${user.role} successfully`, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+              });
             }
           } else {
-            console.log('Kullanıcı bulunamadı');
-            // Hata mesajı göster veya diğer işlemleri yap
+            toast.error("User cannot found!", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            });
           }
         } catch (error) {
-          console.error('Veritabanı hatası:', error);
+          toast.error("Database error: " + error.message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
         }
       })
       .catch((error) => {
-        console.error('Giriş hatası:', error);
+        if (error.code === "auth/wrong-password") {
+          toast.error("Password is invalid", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+        } else if (error.code === "auth/user-not-found") {
+          toast.error("User cannot found", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+        } else {
+          toast.error(`Login error: ${error.message}`, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+        }
       });
-  };
+  }; 
 
   return (
     <div>
